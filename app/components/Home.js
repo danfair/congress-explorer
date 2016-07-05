@@ -1,12 +1,11 @@
 var React = require('react');
+var PromptContainer = require('../containers/PromptContainer');
 
-var Home = React.createClass({
-	render: function() {
-		return (
-			<div>Home!</div>
-		)
-	}
-});
+function Home(props) {
+	return (
+		<PromptContainer />
+	)
+}
 
 module.exports = Home;
 	
