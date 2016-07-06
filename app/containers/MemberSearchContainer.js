@@ -15,15 +15,15 @@ var MemberSearchContainer = React.createClass({
   updateSearchResults: function() {
     sunlightHelpers.getMembersByNameSearch(this.state.searchTerm)
       .then(function(membersList) {
-        console.log(membersList);
         this.setState({
-          membersList: membersList
+          membersList: membersList.map(function(member) {
+            return (<li><a href={'/legislator/' + member.bioguide_id }>{member.last_name} {member.first_name} - {member.party}</a></li>)
+          })
         })
       }.bind(this));
   },
 
   componentDidMount: function() {
-    // returns a Promise
     this.updateSearchResults();
   },
 
@@ -38,11 +38,9 @@ var MemberSearchContainer = React.createClass({
 	},
 
 	handleUpdateSearchTerm: function(e) {
-		if (e.target.value.length >= 2) {
-			this.setState({
-				searchTerm: e.target.value
-			}, this.updateSearchResults);
-		}
+		this.setState({
+			searchTerm: e.target.value
+		}, this.updateSearchResults);
 	},
 
 	render: function() {

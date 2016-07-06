@@ -10,11 +10,9 @@ var helpers = {
   // returns a Promise
     return axios.get('http://congress.api.sunlightfoundation.com/legislators' + param + '&query=' + username)
       .then(function(response) {
-        return response.data.results.map(function(curVal) {
-          return (<li>{curVal.last_name} {curVal.first_name} - {curVal.party}</li>)
-        })
+        return response.data.results
       })
-  },
+  }
 };
 
 module.exports = helpers;
