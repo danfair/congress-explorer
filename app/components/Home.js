@@ -1,11 +1,13 @@
 var React = require('react');
-var PromptContainer = require('../containers/PromptContainer');
+var MemberSearchContainer = require('../containers/MemberSearchContainer');
 
 function Home(props) {
 	return (
-		<PromptContainer />
+		<div>
+      <MemberSearchContainer />
+    </div>
 	)
 }
 
 module.exports = Home;
-	
+

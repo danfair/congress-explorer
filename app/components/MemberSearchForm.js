@@ -1,7 +1,7 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 
-function Prompt(props) {
+function MemberSearchForm(props) {
 	return (
 		<div className='row'>
 			<div className='col-sm-5'>
@@ -9,9 +9,9 @@ function Prompt(props) {
 				<input
 					className="form-control"
 					placeholder="01234"
-					type="text" 
+					type="text"
 					onChange={props.onUpdateZip}
-					value={props.zip} 
+					value={props.zip}
 				/>
 			</div>
 			<div className='col-sm-2'>
@@ -22,20 +22,20 @@ function Prompt(props) {
 				<input
 					className="form-control"
 					placeholder="George Washington"
-					type="text" 
+					type="text"
 					onChange={props.onUpdateSearchTerm}
-					value={props.searchTerm} 
+					value={props.searchTerm}
 				/>
 			</div>
 		</div>
 	)
 }
 
-Prompt.propTypes = {
+MemberSearchForm.propTypes = {
 	onUpdateZip: PropTypes.func.isRequired,
 	onUpdateSearchTerm: PropTypes.func.isRequired,
 	searchTerm: PropTypes.string
 };
 
-module.exports = Prompt;
-	
+module.exports = MemberSearchForm;
+
