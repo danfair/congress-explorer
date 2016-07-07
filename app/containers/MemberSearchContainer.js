@@ -1,4 +1,5 @@
 var React = require('react');
+var Link = require('react-router').Link;
 var MemberSearchForm = require('../components/MemberSearchForm');
 var MemberSearchResult = require('../components/MemberSearchResult');
 var sunlightHelpers = require('../helpers/sunlight-api-helpers');
@@ -17,7 +18,9 @@ var MemberSearchContainer = React.createClass({
       .then(function(membersList) {
         this.setState({
           membersList: membersList.map(function(member) {
-            return (<li><a href={'/legislator/' + member.bioguide_id }>{member.last_name} {member.first_name} - {member.party}</a></li>)
+            return (<li><Link to={'/legislator/' + member.bioguide_id }>
+              {member.last_name}, {member.first_name} ({member.party})
+            </Link></li>)
           })
         })
       }.bind(this));
