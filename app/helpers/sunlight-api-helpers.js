@@ -7,10 +7,20 @@ var param = "?apikey=" + apiKey + '&in_office=true';
 
 var helpers = {
   getMembersByNameSearch: function(username) {
-  // returns a Promise
     return axios.get('http://congress.api.sunlightfoundation.com/legislators' + param + '&query=' + username)
       .then(function(response) {
         return response.data.results
+      })
+  },
+
+  getMembersByZip: function(zip) {
+
+  },
+
+  getMemberBio: function(bioguideId) {
+    return axios.get('http://congress.api.sunlightfoundation.com/legislators' + param + '&bioguide_id=' + bioguideId)
+      .then(function(response) {
+        return response.data.results[0]
       })
   }
 };

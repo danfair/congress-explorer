@@ -1,4 +1,6 @@
 var React = require('react');
+var BioContainer = require('../components/BioContainer');
+var sunlightHelpers = require('../helpers/sunlight-api-helpers');
 
 var MemberBioContainer = React.createClass({
   getInitialState: function() {
@@ -7,12 +9,21 @@ var MemberBioContainer = React.createClass({
     }
   },
 
+  componentDidMount: function() {
+    sunlightHelpers.getMemberBio(this.props.routeParams.bioguideId)
+      .then(function(bioData) {
+        console.log(bioData);
+        this.setState({
+          bio: bioData
+        })
+      }.bind(this))
+  },
+
   render: function() {
     return (
-      <div>hey</div>
+      <BioContainer bioData={this.state.bio} />
     )
   }
 });
 
 module.exports = MemberBioContainer;
-
