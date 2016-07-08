@@ -10,7 +10,7 @@ function BioContainer (props) {
 }
 
 BioContainer.propTypes = {
-
+  bioData: PropTypes.object.isRequired
 };
 
 module.exports = BioContainer;

@@ -5,7 +5,7 @@ var sunlightHelpers = require('../helpers/sunlight-api-helpers');
 var MemberBioContainer = React.createClass({
   getInitialState: function() {
     return {
-      bio: []
+      bio: {}
     }
   },
 

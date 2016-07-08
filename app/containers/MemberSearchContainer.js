@@ -13,37 +13,45 @@ var MemberSearchContainer = React.createClass({
 		}
 	},
 
-  updateSearchResults: function() {
-    sunlightHelpers.getMembersByNameSearch(this.state.searchTerm)
-      .then(function(membersList) {
-        this.setState({
-          membersList: membersList.map(function(member) {
-            return (<li><Link to={'/legislator/' + member.bioguide_id }>
-              {member.last_name}, {member.first_name} ({member.party})
-            </Link></li>)
-          })
-        })
-      }.bind(this));
-  },
+	updateMembersList: function(membersList) {
+		this.setState({
+			membersList: membersList.map(function(member) {
+				return (<li><Link to={'/legislator/' + member.bioguide_id }>
+					{member.title + '.'} {member.first_name} {member.last_name} ({member.party} - {member.state})
+				</Link></li>)
+			})
+		})
+	},
 
-  componentDidMount: function() {
-    this.updateSearchResults();
-  },
+	componentDidMount: function() {
+		sunlightHelpers.getMembersByNameSearch(this.state.searchTerm)
+			.then(function(membersList) {
+				this.updateMembersList(membersList)
+			}.bind(this))
+	},
 
 	handleUpdateZip: function(e) {
 		if (e.target.value.length === 5) {
 			this.setState({
 				zip: e.target.value
 			}, function() {
-				console.log(this.state.zip);
-			});
+				sunlightHelpers.getMembersByZip(this.state.zip)
+					.then(function(membersList) {
+						this.updateMembersList(membersList)
+					}.bind(this))
+			})
 		}
 	},
 
 	handleUpdateSearchTerm: function(e) {
 		this.setState({
 			searchTerm: e.target.value
-		}, this.updateSearchResults);
+		}, function() {
+			sunlightHelpers.getMembersByNameSearch(this.state.searchTerm)
+			.then(function(membersList) {
+				this.updateMembersList(membersList)
+			}.bind(this))
+		})
 	},
 
 	render: function() {
@@ -57,4 +65,3 @@ var MemberSearchContainer = React.createClass({
 });
 
 module.exports = MemberSearchContainer;
-
