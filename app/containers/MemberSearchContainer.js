@@ -16,7 +16,7 @@ var MemberSearchContainer = React.createClass({
 	updateMembersList: function(membersList) {
 		this.setState({
 			membersList: membersList.map(function(member) {
-				return (<li><Link to={'/legislator/' + member.bioguide_id }>
+				return (<li className='list-group-item'><Link to={'/legislator/' + member.bioguide_id }>
 					{member.title + '.'} {member.first_name} {member.last_name} ({member.party} - {member.state})
 				</Link></li>)
 			})

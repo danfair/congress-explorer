@@ -5,7 +5,7 @@ function MemberSearchResult(props) {
   return (
     <div>
       <h2>Members:</h2>
-      <ul>
+      <ul className='list-group'>
         {props.membersList}
       </ul>
     </div>
