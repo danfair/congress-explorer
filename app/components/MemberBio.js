@@ -2,6 +2,7 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 var styles = require('../styles');
 var MemberLegislation = require('./MemberLegislation');
+var MemberCommittees = require('./MemberCommittees');
 
 function MemberBio (props) {
   return (
@@ -28,6 +29,10 @@ function MemberBio (props) {
         {props.bioData.facebook_id && <div><a href={'https://facebook.com/' + props.bioData.facebook_id}>Facebook</a></div>}
       </li>
       <li className='list-group-item'>
+        <h5 className='text-muted' style={styles.allCaps}>Committees</h5>
+        <MemberCommittees committees={props.committees} />
+      </li>
+      <li className='list-group-item'>
         <h5 className='text-muted' style={styles.allCaps}>Sponsored Legislation</h5>
         <MemberLegislation legislation={props.legislation} />
       </li>
@@ -36,7 +41,9 @@ function MemberBio (props) {
 }
 
 MemberBio.propTypes = {
-  bioData: PropTypes.object.isRequired
+  bioData: PropTypes.object.isRequired,
+  legislation: PropTypes.array.isRequired,
+  committees: PropTypes.array.isRequired
 };
 
 module.exports = MemberBio;

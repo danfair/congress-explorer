@@ -34,6 +34,14 @@ var helpers = {
       .then(function(response) {
         return response.data.results
       })
+  },
+
+  getCommitteesByMember: function(bioguideId) {
+    console.log(bioguideId);
+    return axios.get(baseUrl + '/committees' + param + '&member_ids=' + bioguideId)
+      .then(function(response) {
+      return response.data.results
+    })
   }
 };
 
