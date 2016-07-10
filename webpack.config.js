@@ -1,7 +1,7 @@
 var HtmlWebpackPlugin = require ('html-webpack-plugin');
 var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 	template: __dirname + '/app/index.html',
-	filename: 'index.html', 
+	filename: 'index.html',
 	inject: 'body'
 });
 
@@ -16,7 +16,8 @@ module.exports = {
 	module: {
 		loaders: [
 			{test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
-			{test: /\.css$/, loader: "style-loader!css-loader"}
+			{test: /\.css$/, loader: "style-loader!css-loader"},
+			{ test: /\.(png|jpg|gif)$/, loader: 'file-loader?limit=8192' }
 		]
 	},
 	plugins: [HTMLWebpackPluginConfig]

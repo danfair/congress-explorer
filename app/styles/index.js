@@ -7,6 +7,10 @@ var styles = {
 	},
 	noListStyleType: {
 		listStyleType: 'none'
+	},
+	centered: {
+		margin: '50px auto',
+		display: 'block'
 	}
 }
 
