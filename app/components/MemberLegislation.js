@@ -1,9 +1,10 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
+var styles = require('../styles');
 
 function MemberLegislation (props) {
   return (
-    <ul>{props.legislation}</ul>
+    <ul style={styles.noListStyleType}>{props.legislation}</ul>
   )
 }
 

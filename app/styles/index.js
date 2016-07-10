@@ -4,6 +4,9 @@ var styles = {
 	},
 	capitalize: {
 		textTransform: 'capitalize'
+	},
+	noListStyleType: {
+		listStyleType: 'none'
 	}
 }
 

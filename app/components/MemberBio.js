@@ -27,7 +27,7 @@ function MemberBio (props) {
         {props.bioData.twitter_id && <div><a href={'https://twitter.com/' + props.bioData.twitter_id}>Twitter</a></div>}
         {props.bioData.facebook_id && <div><a href={'https://facebook.com/' + props.bioData.facebook_id}>Facebook</a></div>}
       </li>
-      <li>
+      <li className='list-group-item'>
         <h5 className='text-muted' style={styles.allCaps}>Sponsored Legislation</h5>
         <MemberLegislation legislation={props.legislation} />
       </li>
